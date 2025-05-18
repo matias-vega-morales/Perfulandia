@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiAutenticacionYGestionDeUsuarioApplication<API-Autenticacion_y_gestion_de_usuario>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.API_Autenticacion_y_gestion_de_usuario.ApiAutenticacionYGestionDeUsuarioApplication",
+            "projectName": "API-Autenticacion_y_gestion_de_usuario",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

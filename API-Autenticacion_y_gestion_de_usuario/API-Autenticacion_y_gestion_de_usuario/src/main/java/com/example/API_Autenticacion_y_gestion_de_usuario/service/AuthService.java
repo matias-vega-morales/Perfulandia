@@ -1,20 +1,20 @@
 package com.example.API_Autenticacion_y_gestion_de_usuario.service;
 
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.authorization.AuthenticatedAuthorizationManager;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.webauthn.api.AuthenticatorResponse;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.API_Autenticacion_y_gestion_de_usuario.dto.AuthResponse;
 import com.example.API_Autenticacion_y_gestion_de_usuario.dto.LoginRequest;
 import com.example.API_Autenticacion_y_gestion_de_usuario.models.Usuario;
 import com.example.API_Autenticacion_y_gestion_de_usuario.repository.UsuarioRepository;
 import com.example.API_Autenticacion_y_gestion_de_usuario.security.JwtUtil;
-import com.example.API_Autenticacion_y_gestion_de_usuario.security.UserDetailsImpl;
-import com.example.API_Autenticacion_y_gestion_de_usuario.dto.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -24,16 +24,18 @@ public class AuthService {
     private final UsuarioRepository usuarioRepository;      // Repositorio para acceder a los datos de usuario
     private final PasswordEncoder passwordEncoder;      // Codificador de contraseñas para encriptar y verificar contraseñas
     private final JwtUtil jwtUtil;      // Utilidad para generar y validar tokens JWT
-    private final AuthenticatedAuthorizationManager authManager; // Gestor de autenticación para manejar la autenticación de usuarios
+    private final AuthenticationManager authManager; // Cambiado aquí
 
     
     public AuthResponse login(LoginRequest request) { // Método para iniciar sesión
-        authManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()))
+        authManager.authenticate(
+            new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
+        );
 
         Usuario usuario = usuarioRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
-        String token = JwtUtil.generateToken(usuario); // Genera un token JWT para el usuario autenticado
+        String token = jwtUtil.generateToken((UserDetails) usuario); // Corrige el uso de JwtUtil
         return new AuthResponse(token, usuario.getUsername()); // Retorna el token y el nombre de usuario
     }
 
@@ -67,4 +69,6 @@ public class AuthService {
         usuarioRepository.deleteById(id);
     }
 }
+
+
 
