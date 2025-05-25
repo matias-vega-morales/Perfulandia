@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ApiProductosApplication",
+            "request": "launch",
+            "mainClass": "com.example.API_Productos.ApiProductosApplication",
+            "projectName": "API-Productos"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ApiAutenticacionYGestionDeUsuarioApplication<API-Autenticacion_y_gestion_de_usuario>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
