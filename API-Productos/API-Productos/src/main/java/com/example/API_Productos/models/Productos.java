@@ -5,7 +5,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +18,7 @@ import java.math.BigDecimal;
 public class Productos {
     @Id     // Indica que este campo es la clave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;        // ID del producto
+    private Long producto_id;        // ID del producto
 
     private String nombre;      // Nombre del producto
     private String descripcion;     // Descripción del producto

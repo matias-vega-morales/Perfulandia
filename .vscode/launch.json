@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ApiInventarioApplication",
+            "request": "launch",
+            "mainClass": "com.example.API_Inventario.ApiInventarioApplication",
+            "projectName": "API-Inventario"
+        },
+        {
+            "type": "java",
             "name": "ApiProductosApplication",
             "request": "launch",
             "mainClass": "com.example.API_Productos.ApiProductosApplication",
