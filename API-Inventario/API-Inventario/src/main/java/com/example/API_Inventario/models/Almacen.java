@@ -17,4 +17,3 @@ public class Almacen {
     private String nombre;
     private String ubicacion;
 }
-//
