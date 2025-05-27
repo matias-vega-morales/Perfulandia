@@ -26,8 +26,8 @@ public class AuthController {
 
     @PostMapping("/login")      // Endpoint para iniciar sesión
 public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {  // Validación del encabezado de autorización JWT
-    String token = authService.login(request.getUsername(), request.getPassword()); // Genera el token JWT y retorna el encabezado de respuesta con el token JWT y el nombre de usuario
-    return ResponseEntity.ok(new AuthResponse(token, request.getUsername()));   // Retorna el encabezado de respuesta con el token JWT y el nombre de usuario
+    AuthResponse authResponse = authService.login(request);     // Llama al servicio de autenticación para iniciar sesión
+    return ResponseEntity.ok(authResponse);      // Retorna la respuesta de autenticación con el código de estado 200 (OK)
 }
 
 
