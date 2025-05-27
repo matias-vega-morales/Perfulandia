@@ -22,6 +22,17 @@
             "mainClass": "com.example.API_Autenticacion_y_gestion_de_usuario.ApiAutenticacionYGestionDeUsuarioApplication",
             "projectName": "API-Autenticacion_y_gestion_de_usuario",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=59121 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=API-Autenticacion_y_gestion_de_usuario"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGatewayApplication<API-Gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.API_Gateway.ApiGatewayApplication",
+            "projectName": "API-Gateway",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
     ]

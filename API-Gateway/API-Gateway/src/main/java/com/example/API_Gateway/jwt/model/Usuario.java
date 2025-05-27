@@ -1,4 +1,4 @@
-package com.example.API_Autenticacion_y_gestion_de_usuario.models;
+package com.example.API_Gateway.jwt.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,23 +11,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Usuarios")
+@Table(name = "usuarios")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario") // <== ¡ESTO ES CLAVE!
+    @Column(name = "id_usuario")
     private Integer idUsuario;
-
+    
     @Column(name = "nombre_usuario")
     private String nombreUsuario;
-    private String email;
-    private String contrasena;
-    private String rol;
-    private String estado;
-    
 
+    private String contrasena;
+    private String estado;
+    private String rol;
 
 }

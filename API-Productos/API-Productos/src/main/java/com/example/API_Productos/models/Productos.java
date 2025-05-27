@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 public class Productos {
     @Id     // Indica que este campo es la clave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long producto_id;        // ID del producto
+    private Long id_producto;        // ID del producto
 
     private String nombre;      // Nombre del producto
     private String descripcion;     // Descripción del producto
