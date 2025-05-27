@@ -61,7 +61,7 @@ private final InventarioService inventarioService;
     // Ajuste de stock (PUT o PATCH)
     @PutMapping("/ajuste")      // Ajustar stock de inventario
     public ResponseEntity<?> ajustarStock(@RequestBody Inventario ajuste) {
-        return inventarioService.findById(ajuste.getId())
+        return inventarioService.findById(ajuste.getId_inventario())
                 .map(inventario -> {
                     inventario.setCantidad(ajuste.getCantidad());
                     inventarioService.save(inventario);
@@ -76,7 +76,6 @@ private final InventarioService inventarioService;
                 .map(inventario -> {
                     inventario.setProductoId(inventarioActualizado.getProductoId());
                     inventario.setCantidad(inventarioActualizado.getCantidad());
-                    inventario.setUbicacion(inventarioActualizado.getUbicacion());
                     inventarioService.save(inventario);
                     return ResponseEntity.ok("Inventario actualizado exitosamente");
                 })
@@ -115,7 +114,7 @@ private final InventarioService inventarioService;
         if (inventarios.isEmpty()) {
             return ResponseEntity.status(404).body("No hay inventario para el producto con id: " + id);
         }
-        inventarios.forEach(inv -> inventarioService.deleteById(inv.getId()));
+        inventarios.forEach(inv -> inventarioService.deleteById(inv.getId_inventario()));
         return ResponseEntity.ok("Inventario del producto eliminado exitosamente");
     }
 }

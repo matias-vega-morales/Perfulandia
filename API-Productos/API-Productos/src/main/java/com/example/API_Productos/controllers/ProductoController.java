@@ -54,7 +54,7 @@ public class ProductoController {
     @PostMapping("/NuevoProducto")        // Endpoint para crear un nuevo producto
     public ResponseEntity<?> create(@RequestBody Productos producto) {
         Productos nuevo = productosRepository.save(producto);
-        return ResponseEntity.status(201).body("Producto creado exitosamente: " + nuevo.getProducto_id());
+        return ResponseEntity.status(201).body("Producto creado exitosamente: " + nuevo.getId_producto());
     }
 
     @PutMapping("/{id}") // Endpoint para actualizar un producto por su ID
