@@ -15,12 +15,7 @@ public class Inventario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_inventario;
 
-    @Column(name = "producto_id", nullable = false)
-    private Long productoId;
-
-    @ManyToOne  // Relación con la entidad Almacen
-    @JoinColumn(name = "almacen_id", referencedColumnName = "ubicacion", nullable = false) // Indica que el campo almacen_id es una clave foránea que hace referencia a la tabla almacenes
-    private Almacen almacen; // Relación con la entidad Almacen
-
-    private Integer cantidad;   
+    private Long id_producto;
+    private Integer stock_disponible; // Cantidad de stock disponible
+    private String ubicacion_bodega; // Ubicación del producto en el inventario  
 }

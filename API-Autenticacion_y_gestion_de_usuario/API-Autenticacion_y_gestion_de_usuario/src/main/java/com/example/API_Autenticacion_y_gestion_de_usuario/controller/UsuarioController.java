@@ -33,7 +33,7 @@ public class UsuarioController {
         return service.listarUsuarios();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}")        // Consultar usuario por ID
     public ResponseEntity<?> getById(@PathVariable Integer id) {
         try {
             UsuarioDTO usuario = service.buscarUsuarioPorId(id);
@@ -44,13 +44,13 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping
+    @PostMapping        // Crear un nuevo usuario
     public ResponseEntity<Usuario> crear(@RequestBody CrearUsuarioRequest request) {
         Usuario creado = service.crearUsuario(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(creado);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}")    // Actualizar un usuario existente
     public ResponseEntity<UsuarioDTO> editarUsuario(@PathVariable Integer id, @RequestBody UsuarioDTO usuarioDTO) {
         UsuarioDTO actualizado = service.actualizarUsuario(id, usuarioDTO);
         return ResponseEntity.ok(actualizado);

@@ -83,7 +83,7 @@ public class UsuarioService {
         return nuevoUsuario;
     }
 
-    public UsuarioDTO buscarUsuarioPorId(Integer id) {
+    public UsuarioDTO buscarUsuarioPorId(Integer id) {      // Método para buscar un usuario por su ID
         Usuario usuario = usuarioRepo.findById(id)
             .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
 
@@ -91,8 +91,8 @@ public class UsuarioService {
         return mapper.usuarioToDto(usuario);
     }
 
-    public UsuarioDTO actualizarUsuario(Integer id, UsuarioDTO dto) {
-        Usuario usuario = usuarioRepo.findById(id)
+    public UsuarioDTO actualizarUsuario(Integer id, UsuarioDTO dto) {       // Método para actualizar un usuario por su ID
+        Usuario usuario = usuarioRepo.findById(id) // Buscar el usuario por ID
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + id));
 
         usuario.setNombreUsuario(dto.getNombreUsuario());
@@ -107,7 +107,7 @@ public class UsuarioService {
 
 
 
-    public void eliminarUsuario(Integer id) {
+    public void eliminarUsuario(Integer id) {       // Método para eliminar un usuario por su ID
         usuarioRepo.deleteById(id);
     }
 }
