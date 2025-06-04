@@ -26,4 +26,5 @@ public class Productos {
     private String categoria;   // Categoria del producto
     private String marca;   // Marca del producto
     private String mml;
+    private String activo;
 }
