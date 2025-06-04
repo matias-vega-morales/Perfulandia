@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 
@@ -68,12 +72,14 @@ public class ProductoController {
             producto.setCategoria(productoActualizado.getCategoria());
             producto.setMarca(productoActualizado.getMarca());
             producto.setMml(productoActualizado.getMml());
+            producto.setActivo(productoActualizado.getActivo()); // Actualiza el estado activo del producto
             productosRepository.save(producto);
             return ResponseEntity.ok("Producto actualizado exitosamente");
         } else {
             return ResponseEntity.status(404).body("Producto no encontrado");
         }
     }
+
 
     @DeleteMapping("/{id}") // Endpoint para eliminar un producto por su ID
     public ResponseEntity<String> delete(@PathVariable Long id) {
