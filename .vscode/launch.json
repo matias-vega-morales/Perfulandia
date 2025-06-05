@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ApiClienteApplication",
+            "request": "launch",
+            "mainClass": "com.example.ApiClienteApplication",
+            "projectName": "api-cliente"
+        },
+        {
+            "type": "java",
             "name": "ApiInventarioApplication",
             "request": "launch",
             "mainClass": "com.example.API_Inventario.ApiInventarioApplication",
